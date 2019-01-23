@@ -703,5 +703,18 @@ public class Myclass {
             }
         }
     }
+    
+    //Project 2
+    public void linconvolve(Myclass x, Myclass h) {
+        for (int xx = 0; xx < x.getn(); xx++) {
+            (this.re)[xx] = 0;
+            (this.im)[xx] = 0;
+            for (int k = 0; k < xx; k++) {
+                this.re[xx] += x.re[k] * h.re[xx - k];
+                this.im[xx] += x.im[k] * h.im[xx - k];
+            }
+        }
+    }
+
 //end Myclass.java
 }

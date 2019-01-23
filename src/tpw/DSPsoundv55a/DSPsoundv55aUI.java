@@ -291,6 +291,11 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
                 jButtonConvolveF1F2MouseClicked(evt);
             }
         });
+        jButtonConvolveF1F2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConvolveF1F2ActionPerformed(evt);
+            }
+        });
         jPanel8.add(jButtonConvolveF1F2);
 
         jButtonMagHomega.setText("|H(w)|");
@@ -865,6 +870,10 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButtonConvolveF1F2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvolveF1F2ActionPerformed
+        dispData.linconvolve(inData1, inData2);
+    }//GEN-LAST:event_jButtonConvolveF1F2ActionPerformed
 
     
     
