@@ -703,7 +703,7 @@ public class Myclass {
             }
         }
     }
-    
+
     //Project 2
     public void linconvolve(Myclass x, Myclass h) {
         for (int xx = 0; xx < x.getn(); xx++) {
@@ -716,5 +716,19 @@ public class Myclass {
         }
     }
 
+    public void hOmega() {
+        Myclass h = new Myclass();
+        h.equals(this);
+        this.equals(0.0f);
+        double j = ((2 * Math.PI) / h.n);
+        float e = 0;
+        for (int xx = 0; xx < h.getn(); xx++) {
+            e = (float) (xx * j);
+            for (int k = 0; k < h.getn(); k++) {
+                (this.re)[xx] += (float) h.re[k] * Math.cos(k * e) + h.im[k] * Math.sin(k * e);
+                (this.im)[xx] += (float) h.im[k] * Math.cos(k * e) - h.re[k] * Math.sin(k * e);
+            }
+        }
+    }
 //end Myclass.java
 }
