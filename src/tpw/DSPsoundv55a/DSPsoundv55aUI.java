@@ -129,6 +129,7 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DSPsound-v55a (tpw 07)");
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
 
@@ -273,6 +274,11 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
         jButton20log10magFFT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton20log10magFFTMouseClicked(evt);
+            }
+        });
+        jButton20log10magFFT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20log10magFFTActionPerformed(evt);
             }
         });
         jPanel8.add(jButton20log10magFFT);
@@ -836,6 +842,17 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
 
         refreshDisplay(); //redraws output display screen           
     }//GEN-LAST:event_jButtonMagHomegaActionPerformed
+
+    private void jButton20log10magFFTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20log10magFFTActionPerformed
+        // TODO add your handling code here:
+        Myclass x = new Myclass();
+        x.plus(-1);
+        Myclass y = new Myclass();
+        x.equals(inData1);
+        x.multiply(-1);
+        y.equals(x.fft());
+        dispData.equals(y);
+    }//GEN-LAST:event_jButton20log10magFFTActionPerformed
 
     /**
      * @param args the command line arguments

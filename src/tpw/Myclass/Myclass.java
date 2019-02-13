@@ -693,6 +693,21 @@ public class Myclass {
         }
     }
 
+    public void multiply(float x) {
+        if ((n == 0) || (data == null)) {
+            System.out.println("null array assignment in public void   plus(int x) \n");
+            Runtime.getRuntime().exit(1);
+        } else {
+            for (int xx = 0; xx < n; xx++) {
+                if (x != 0f) {
+                    (this.re)[xx] = (float) ((this.re)[xx] * Math.pow(x, xx));
+                    //(this.im)[xx] = (float) ((this.im)[xx] * Math.pow(x, xx));
+                    
+                }
+            }
+        }
+    }
+    
     public void square() {
         if ((n == 0) || (data == null)) {
             System.out.println("null array assignment in public void   plus(int x) \n");
