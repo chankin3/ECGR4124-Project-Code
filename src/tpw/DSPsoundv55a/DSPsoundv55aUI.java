@@ -129,7 +129,6 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DSPsound-v55a (tpw 07)");
-        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
 
@@ -137,7 +136,7 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
 
         jLabel1.setText("input filename1:");
 
-        jTextFieldInfilename1.setText("sin3264.au");
+        jTextFieldInfilename1.setText("box16.au");
         jTextFieldInfilename1.setPreferredSize(new java.awt.Dimension(200, 19));
         jTextFieldInfilename1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -846,11 +845,12 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
     private void jButton20log10magFFTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20log10magFFTActionPerformed
         // TODO add your handling code here:
         Myclass x = new Myclass();
-        x.plus(-1);
         Myclass y = new Myclass();
-        x.equals(inData1);
-        x.multiply(-1);
+        x.equals(dispData);
+        x.shift(-1);
+        //x.shift2();
         y.equals(x.fft());
+        y.twentyLogMag();
         dispData.equals(y);
     }//GEN-LAST:event_jButton20log10magFFTActionPerformed
 

@@ -693,7 +693,7 @@ public class Myclass {
         }
     }
 
-    public void multiply(float x) {
+    public void shift(float x) {
         if ((n == 0) || (data == null)) {
             System.out.println("null array assignment in public void   plus(int x) \n");
             Runtime.getRuntime().exit(1);
@@ -703,6 +703,43 @@ public class Myclass {
                     (this.re)[xx] = (float) ((this.re)[xx] * Math.pow(x, xx));
                     //(this.im)[xx] = (float) ((this.im)[xx] * Math.pow(x, xx));
                     
+                }
+            }
+        }
+    }
+    
+    //test
+        public void shift2() {
+        if ((n == 0) || (data == null)) {
+            System.out.println("null array assignment in public void   plus(int x) \n");
+            Runtime.getRuntime().exit(1);
+        } else {
+            float temp[] = this.re;
+            this.re = this.im;
+            this.im = temp;
+            for (int xx = 0; xx < n; xx++) {
+                    this.im[xx] = (float) this.im[xx]*(-1);
+                    //(this.im)[xx] = (float) ((this.im)[xx] * Math.pow(x, xx));
+                    
+                
+            }
+        }
+    }
+    
+    public void twentyLogMag(){
+        if ((n == 0) || (data == null)) {
+            System.out.println("null array assignment in public void   plus(int x) \n");
+            Runtime.getRuntime().exit(1);
+        } else {
+            for (int xx = 0; xx < n; xx++) {
+                if(this.re[xx] != 0){
+                    this.re[xx] = (float) (20*Math.log10(Math.sqrt(Math.pow(this.re[xx], 2) + Math.pow(this.im[xx], 2))));        
+                }
+                
+            }
+            for (int xx = 0; xx < n; xx++) {
+                if(this.re[xx] == 0){
+                    this.re[xx] = this.maxre() - 80;
                 }
             }
         }
