@@ -736,7 +736,7 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
         String fkey = new String("F3");
         jEditorPaneBottom.setText(fkey + " clicked \n");  //printout at screenbottom 
 
-        dispData.shift2(-1*(1000*Math.PI));
+        dispData.shift2(4000*Math.PI);
 
         refreshDisplay(); //redraws output display screen           
 
