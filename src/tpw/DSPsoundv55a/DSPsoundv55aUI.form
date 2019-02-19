@@ -128,7 +128,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldinfilename2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="sin32.au"/>
+                <Property name="text" type="java.lang.String" value="sin3264.au"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldinfilename2ActionPerformed"/>

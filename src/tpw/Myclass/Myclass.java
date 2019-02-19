@@ -702,30 +702,37 @@ public class Myclass {
                 if (x != 0f) {
                     (this.re)[xx] = (float) ((this.re)[xx] * Math.pow(x, xx));
                     //(this.im)[xx] = (float) ((this.im)[xx] * Math.pow(x, xx));
-                    
                 }
             }
         }
     }
     
     //test
-        public void shift2() {
+        public void shift2(double shamt) {
         if ((n == 0) || (data == null)) {
             System.out.println("null array assignment in public void   plus(int x) \n");
             Runtime.getRuntime().exit(1);
         } else {
-            float temp[] = this.re;
-            this.re = this.im;
-            this.im = temp;
+            //Apply Euler's formula to eqn 6 in table 8.2
             for (int xx = 0; xx < n; xx++) {
-                    this.im[xx] = (float) this.im[xx]*(-1);
-                    //(this.im)[xx] = (float) ((this.im)[xx] * Math.pow(x, xx));
-                    
-                
+                this.re[xx] = this.re[xx] * (float) Math.cos((2*Math.PI)/n * xx * shamt);
+                this.im[xx] = this.im[xx] * (float) -Math.sin((2*Math.PI)/n * xx * shamt);
             }
         }
     }
     
+    public void backwardDifference(){
+        if ((n == 0) || (data == null)) {
+            System.out.println("null array assignment in public void   plus(int x) \n");
+            Runtime.getRuntime().exit(1);
+        } else {
+            for (int xx = 1; xx < n; xx++) {
+                this.re[xx] = this.re[xx] - this.re[xx - 1];
+                this.im[xx] = this.im[xx] - this.im[xx - 1];
+            }
+        }
+    }
+        
     public void twentyLogMag(){
         if ((n == 0) || (data == null)) {
             System.out.println("null array assignment in public void   plus(int x) \n");
@@ -733,10 +740,12 @@ public class Myclass {
         } else {
             for (int xx = 0; xx < n; xx++) {
                 if(this.re[xx] != 0){
+                    //For all non-zeros, take 20log10(|this|)
                     this.re[xx] = (float) (20*Math.log10(Math.sqrt(Math.pow(this.re[xx], 2) + Math.pow(this.im[xx], 2))));        
                 }
                 
             }
+            // For zeros, we know the minimum is 80db less than the maximum, since we take the magnitude, if there is a zero, it's the minimum. So subtract 80db.
             for (int xx = 0; xx < n; xx++) {
                 if(this.re[xx] == 0){
                     this.re[xx] = this.maxre() - 80;
@@ -766,6 +775,21 @@ public class Myclass {
                 this.im[xx] += x.im[k] * h.im[xx - k];
             }
         }
+    }
+    
+    public void circConvolve(Myclass x, Myclass y){
+        //Step 1
+        x.equals(x.fft());
+        y.equals(y.fft());
+
+        //Step 2
+        for(int k = 0; k < x.getn(); k++){
+            this.re[k] = (x.re[k]*y.re[k]) - (x.im[k]*y.im[k]);
+            this.im[k] = (x.im[k]*y.re[k]) + (x.re[k]*y.im[k]);
+        }
+        
+        //Step 3
+        this.equals(this.ifft());
     }
 
     public void hOmega() {

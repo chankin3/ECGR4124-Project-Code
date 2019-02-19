@@ -153,7 +153,7 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
 
         jLabel5.setText("input filename2:");
 
-        jTextFieldinfilename2.setText("sin32.au");
+        jTextFieldinfilename2.setText("sin3264.au");
         jTextFieldinfilename2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldinfilename2ActionPerformed(evt);
@@ -723,7 +723,7 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
         String fkey = new String("F4");
         jEditorPaneBottom.setText(fkey + " clicked \n");  //printout at screenbottom 
 
-        dispData.square();
+        dispData.backwardDifference();
 
         refreshDisplay(); //redraws output display screen           
 
@@ -736,12 +736,7 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
         String fkey = new String("F3");
         jEditorPaneBottom.setText(fkey + " clicked \n");  //printout at screenbottom 
 
-        inData1.divide(2.0f);
-        inData2.divide(2.0f);
-
-        inData1.plus(inData2);
-
-        dispData.equals(inData1);
+        dispData.shift2(-1*(1000*Math.PI));
 
         refreshDisplay(); //redraws output display screen           
 
@@ -754,8 +749,9 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
         String fkey = new String("F2");
         jEditorPaneBottom.setText(fkey + " clicked \n");  //printout at screenbottom 
 
-        dispData.divide(2.0f);
-
+        //Circular Convolution
+        dispData.circConvolve(inData1, inData2);
+        
         refreshDisplay(); //redraws output display screen           
 
     }//GEN-LAST:event_F2Clicked
@@ -823,6 +819,7 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldinfilename2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
