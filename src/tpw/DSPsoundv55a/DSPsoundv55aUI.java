@@ -376,6 +376,11 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
                 jButtonFreqResponseMouseClicked(evt);
             }
         });
+        jButtonFreqResponse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFreqResponseActionPerformed(evt);
+            }
+        });
         jPanel9.add(jButtonFreqResponse);
 
         jButtonA.setText("A");
@@ -850,6 +855,14 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
         y.twentyLogMag();
         dispData.equals(y);
     }//GEN-LAST:event_jButton20log10magFFTActionPerformed
+
+    private void jButtonFreqResponseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFreqResponseActionPerformed
+        Myclass x = new Myclass();
+        float a3=1, a2=1, a1=1, a0=1;
+        float b3=1, b2=0, b1=0, b0=0;    
+        x.freqresp(a3,a2,a1,a0,b3,b2,b1,b0);
+        dispData.equals(x);
+    }//GEN-LAST:event_jButtonFreqResponseActionPerformed
 
     /**
      * @param args the command line arguments

@@ -45,7 +45,7 @@ public class Myclass {
 //
 //
     public Myclass() {
-        n = 10; 			//default length
+        n = 2048; 			//default length
         data = new byte[n];		//char data array creation
         re = new float[n];
         im = new float[n];
@@ -801,9 +801,24 @@ public class Myclass {
         for (int xx = 0; xx < h.getn(); xx++) {
             e = (float) (xx * j);
             for (int k = 0; k < h.getn(); k++) {
-                (this.re)[xx] += (float) h.re[k] * Math.cos(k * e) + h.im[k] * Math.sin(k * e);
+//                (this.re)[xx] += (float) h.re[k] * Math.cos(k * e) + h.im[k] * Math.sin(k * e);
                 (this.im)[xx] += (float) h.im[k] * Math.cos(k * e) - h.re[k] * Math.sin(k * e);
             }
+        }
+    }
+    
+    public void freqresp(float a3, float a2, float a1, float a0, float b3, float b2, float b1, float b0){
+        Myclass h = new Myclass();
+        h.equals(this);
+        int points = 2048;
+        for (int xx = 0; xx < points; xx++){
+            float z3 = (float) (2*Math.PI/points)*xx*3;
+            float z2 = (float) (2*Math.PI/points)*xx*2;
+            float z1 = (float) (2*Math.PI/points)*xx*3;
+            float z0 = (float) (2*Math.PI/points)*xx*0;
+            
+            (this.re)[xx] = (float) ((a3*Math.cos(z3) + a2*Math.cos(z2) + a1*Math.cos(z1) + a0*Math.cos(z0)) / ((b3*Math.cos(z3) + b2*Math.cos(z2) + b1*Math.cos(z1) + b0*Math.cos(z0)) + (1/100000000)));
+            (this.im)[xx] = (float) ((a3*Math.sin(z3) + a2*Math.sin(z2) + a1*Math.sin(z1) + a0*Math.sin(z0)) / ((b3*Math.sin(z3) + b2*Math.sin(z2) + b1*Math.sin(z1) + b0*Math.sin(z0)) + (1/100000000)));
         }
     }
 //end Myclass.java
