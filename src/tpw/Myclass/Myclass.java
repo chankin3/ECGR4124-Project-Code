@@ -715,8 +715,8 @@ public class Myclass {
         } else {
             //Apply Euler's formula to eqn 6 in table 8.2
             for (int xx = 0; xx < n; xx++) {
-                this.re[xx] = this.re[xx] * (float) Math.cos((2*Math.PI)/n * xx * shamt);
-                this.im[xx] = this.im[xx] * (float) -Math.sin((2*Math.PI)/n * xx * shamt);
+                this.re[xx] = this.re[xx] * (float) Math.cos((Math.PI/2) * xx);
+                this.im[xx] = this.im[xx] * (float) -Math.sin((Math.PI/2) * xx);
             }
         }
     }

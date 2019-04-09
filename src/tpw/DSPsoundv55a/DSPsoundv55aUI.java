@@ -352,6 +352,11 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
                 F4Clicked(evt);
             }
         });
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         jPanel9.add(jButton7);
 
         jButton8.setText("F5");
@@ -725,12 +730,13 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
     private void F4Clicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_F4Clicked
 // TODO add your handling code here:
 
-        String fkey = new String("F4");
-        jEditorPaneBottom.setText(fkey + " clicked \n");  //printout at screenbottom 
-
-        dispData.backwardDifference();
-
-        refreshDisplay(); //redraws output display screen           
+        Myclass x = new Myclass(512);
+        Myclass y = new Myclass();
+        y.equals(dispData);
+        for(int nn=0; nn<512;nn++)  x.setelre(nn,dispData.getelre(nn));
+        dispData.equals(x);
+        refreshDisplay(); //redraws output display screen 
+        dispData.equals(y);      
 
 
     }//GEN-LAST:event_F4Clicked
@@ -863,6 +869,10 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
         x.freqresp(a3,a2,a1,a0,b3,b2,b1,b0);
         dispData.equals(x);
     }//GEN-LAST:event_jButtonFreqResponseActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
