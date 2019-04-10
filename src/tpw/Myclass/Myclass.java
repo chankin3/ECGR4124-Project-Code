@@ -688,7 +688,20 @@ public class Myclass {
             for (int xx = 0; xx < n; xx++) {
                 if (x != 0f) {
                     (this.re)[xx] = (this.re)[xx] / x;
+                    (this.im) [xx] = (this.im) [xx] / x;
                 }
+            }
+        }
+    }
+
+    public void times(float x) {
+        if ((n == 0) || (data == null)) {
+            System.out.println("null array assignment in public void   plus(int x) \n");
+            Runtime.getRuntime().exit(1);
+        } else {
+            for (int xx = 0; xx < n; xx++) {
+                    (this.re)[xx] = (this.re)[xx] * x;
+                    (this.im) [xx] = (this.im) [xx] * x;
             }
         }
     }
@@ -822,18 +835,20 @@ public class Myclass {
         }
     }
 
-    public void movingavgfilter(int ii, Myclass x) {
-        this.equals(x);
-        for (int N = 0; N < ii + 1; N++) {
-            (this.re)[N] = 0;
-            (this.im)[N] = 0;
-            for (int k = 0; k < N; k++) {
-                this.re[N] += x.re[N - k];
-                this.im[N] += x.im[N - k];
+    public void movingavgfilter(int num) {
+        Myclass x = new Myclass();
+        x.equals(this);
+        x.times(0.0f);
+                
+        for (int N = 0; N < this.n; N++) {
+            for (int k = 0; k < num; k++) 
+            if((N-k) > -1){
+                x.re[N] += this.re[N - k];
+                x.im[N] += this.im[N - k];
             }
-            this.re[N] = this.re[N] / (ii + 1);
-            this.im[N] = this.im[N] / (ii + 1);
         }
+        x.divide((float) num);
+        this.equals(x);
     }
 
     public void QPSKSine(int freq) {
