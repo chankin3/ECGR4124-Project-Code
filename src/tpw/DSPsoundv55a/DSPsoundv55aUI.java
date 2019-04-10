@@ -733,10 +733,12 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
         Myclass x = new Myclass(512);
         Myclass y = new Myclass();
         y.equals(dispData);
-        for(int nn=0; nn<512;nn++)  x.setelre(nn,dispData.getelre(nn));
+        for (int nn = 0; nn < 512; nn++) {
+            x.setelre(nn, dispData.getelre(nn));
+        }
         dispData.equals(x);
         refreshDisplay(); //redraws output display screen 
-        dispData.equals(y);      
+        dispData.equals(y);
 
 
     }//GEN-LAST:event_F4Clicked
@@ -747,7 +749,7 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
         String fkey = new String("F3");
         jEditorPaneBottom.setText(fkey + " clicked \n");  //printout at screenbottom 
 
-        dispData.shift2(4000*Math.PI);
+        dispData.shift2(4000 * Math.PI);
 
         refreshDisplay(); //redraws output display screen           
 
@@ -759,10 +761,10 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
 
         String fkey = new String("F2");
         jEditorPaneBottom.setText(fkey + " clicked \n");  //printout at screenbottom 
+        Myclass x = new Myclass();
+        x.movingavgfilter(8191, dispData);
+        dispData.equals(x);
 
-        //Circular Convolution
-        dispData.circConvolve(inData1, inData2);
-        
         refreshDisplay(); //redraws output display screen           
 
     }//GEN-LAST:event_F2Clicked
@@ -777,32 +779,13 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
 // Put your ecgr4124 code here
         //remove the following  code after answering the corresponding
         Myclass x = new Myclass();
-        //Myclass y = new Myclass();
-        x.movingavgfilter(8191, inData1);
+        x.equals(inData1);
+        x.QPSKSine(1000);
+        
+//      x.movingavgfilter(8191, dispData);
         dispData.equals(x);
-        inData1.equals(x);
         //dont remove below here
         refreshDisplay(); //redraws output display screen           
-
-// !! you should not need any of the code commented out below here !!
-        // -----------------------------------------------------------
-        /*   
-         // the following is for calling an external routing F1.exe
-         // as an alternative way to implement a button
-
-            String fkey = new String("F1");
-            jEditorPaneBottom.setText("exec " + fkey + ".exe \n");  
-                 try {Runtime.getRuntime().exec( fkey + ".exe"); 
-                        }
-                  catch (IOException e) {
-                      System.out.println(fkey + "Clicked::"
-                               + fkey + ".exe IOException=" +e);
-                      jEditorPaneBottom.setText( fkey + "Clicked::"
-                               + fkey + ".exe IOException=" +e +"\n" );
-                     } 
-         */
-        // -----------------------------------------------------------
-        // end of commented out code
 
     }//GEN-LAST:event_F1Clicked
 
@@ -858,9 +841,9 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
 
     private void jButtonFreqResponseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFreqResponseActionPerformed
         Myclass x = new Myclass();
-        float a3=1, a2=1, a1=1, a0=1;
-        float b3=1, b2=0, b1=0, b0=0;    
-        x.freqresp(a3,a2,a1,a0,b3,b2,b1,b0);
+        float a3 = 1, a2 = 1, a1 = 1, a0 = 1;
+        float b3 = 1, b2 = 0, b1 = 0, b0 = 0;
+        x.freqresp(a3, a2, a1, a0, b3, b2, b1, b0);
         dispData.equals(x);
     }//GEN-LAST:event_jButtonFreqResponseActionPerformed
 

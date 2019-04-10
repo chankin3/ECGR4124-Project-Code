@@ -835,5 +835,23 @@ public class Myclass {
             this.im[N] = this.im[N] / (ii + 1);
         }
     }
+
+    public void QPSKSine(int freq) {
+        int n = this.getn();
+
+        for (int i = 0; i < n; i++) {
+            (this.re)[i] = (float) (Math.sin(2 * Math.PI * freq * i) * this.re[i]);
+            (this.im)[i] = (float) (Math.sin(2 * Math.PI * freq * i) * this.im[i]);
+        }
+    }
+
+    public void QPSKCosine(int freq) {
+        int n = this.getn();
+
+        for (int i = 0; i < n; i++) {
+            (this.re)[i] = (float) (Math.cos(2 * Math.PI * freq * i) * this.re[i]);
+            (this.im)[i] = (float) (Math.cos(2 * Math.PI * freq * i) * this.im[i]);
+        }
+    }
 //end Myclass.java
 }
