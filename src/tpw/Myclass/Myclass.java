@@ -706,22 +706,22 @@ public class Myclass {
             }
         }
     }
-    
+
     //test
-        public void shift2(double shamt) {
+    public void shift2(double shamt) {
         if ((n == 0) || (data == null)) {
             System.out.println("null array assignment in public void   plus(int x) \n");
             Runtime.getRuntime().exit(1);
         } else {
             //Apply Euler's formula to eqn 6 in table 8.2
             for (int xx = 0; xx < n; xx++) {
-                this.re[xx] = this.re[xx] * (float) Math.cos((Math.PI/2) * xx);
-                this.im[xx] = this.im[xx] * (float) -Math.sin((Math.PI/2) * xx);
+                this.re[xx] = this.re[xx] * (float) Math.cos((Math.PI / 2) * xx);
+                this.im[xx] = this.im[xx] * (float) -Math.sin((Math.PI / 2) * xx);
             }
         }
     }
-    
-    public void backwardDifference(){
+
+    public void backwardDifference() {
         if ((n == 0) || (data == null)) {
             System.out.println("null array assignment in public void   plus(int x) \n");
             Runtime.getRuntime().exit(1);
@@ -732,28 +732,28 @@ public class Myclass {
             }
         }
     }
-        
-    public void twentyLogMag(){
+
+    public void twentyLogMag() {
         if ((n == 0) || (data == null)) {
             System.out.println("null array assignment in public void   plus(int x) \n");
             Runtime.getRuntime().exit(1);
         } else {
             for (int xx = 0; xx < n; xx++) {
-                if(this.re[xx] != 0){
+                if (this.re[xx] != 0) {
                     //For all non-zeros, take 20log10(|this|)
-                    this.re[xx] = (float) (20*Math.log10(Math.sqrt(Math.pow(this.re[xx], 2) + Math.pow(this.im[xx], 2))));        
+                    this.re[xx] = (float) (20 * Math.log10(Math.sqrt(Math.pow(this.re[xx], 2) + Math.pow(this.im[xx], 2))));
                 }
-                
+
             }
             // For zeros, we know the minimum is 80db less than the maximum, since we take the magnitude, if there is a zero, it's the minimum. So subtract 80db.
             for (int xx = 0; xx < n; xx++) {
-                if(this.re[xx] == 0){
+                if (this.re[xx] == 0) {
                     this.re[xx] = this.maxre() - 80;
                 }
             }
         }
     }
-    
+
     public void square() {
         if ((n == 0) || (data == null)) {
             System.out.println("null array assignment in public void   plus(int x) \n");
@@ -776,18 +776,18 @@ public class Myclass {
             }
         }
     }
-    
-    public void circConvolve(Myclass x, Myclass y){
+
+    public void circConvolve(Myclass x, Myclass y) {
         //Step 1
         x.equals(x.fft());
         y.equals(y.fft());
 
         //Step 2
-        for(int k = 0; k < x.getn(); k++){
-            this.re[k] = (x.re[k]*y.re[k]) - (x.im[k]*y.im[k]);
-            this.im[k] = (x.im[k]*y.re[k]) + (x.re[k]*y.im[k]);
+        for (int k = 0; k < x.getn(); k++) {
+            this.re[k] = (x.re[k] * y.re[k]) - (x.im[k] * y.im[k]);
+            this.im[k] = (x.im[k] * y.re[k]) + (x.re[k] * y.im[k]);
         }
-        
+
         //Step 3
         this.equals(this.ifft());
     }
@@ -806,19 +806,33 @@ public class Myclass {
             }
         }
     }
-    
-    public void freqresp(float a3, float a2, float a1, float a0, float b3, float b2, float b1, float b0){
+
+    public void freqresp(float a3, float a2, float a1, float a0, float b3, float b2, float b1, float b0) {
         Myclass h = new Myclass();
         h.equals(this);
         int points = 2048;
-        for (int xx = 0; xx < points; xx++){
-            float z3 = (float) (2*Math.PI/points)*xx*3;
-            float z2 = (float) (2*Math.PI/points)*xx*2;
-            float z1 = (float) (2*Math.PI/points)*xx*3;
-            float z0 = (float) (2*Math.PI/points)*xx*0;
-            
-            (this.re)[xx] = (float) ((a3*Math.cos(z3) + a2*Math.cos(z2) + a1*Math.cos(z1) + a0*Math.cos(z0)) / ((b3*Math.cos(z3) + b2*Math.cos(z2) + b1*Math.cos(z1) + b0*Math.cos(z0)) + (1/100000000)));
-            (this.im)[xx] = (float) ((a3*Math.sin(z3) + a2*Math.sin(z2) + a1*Math.sin(z1) + a0*Math.sin(z0)) / ((b3*Math.sin(z3) + b2*Math.sin(z2) + b1*Math.sin(z1) + b0*Math.sin(z0)) + (1/100000000)));
+        for (int xx = 0; xx < points; xx++) {
+            float z3 = (float) (2 * Math.PI / points) * xx * 3;
+            float z2 = (float) (2 * Math.PI / points) * xx * 2;
+            float z1 = (float) (2 * Math.PI / points) * xx * 3;
+            float z0 = (float) (2 * Math.PI / points) * xx * 0;
+
+            (this.re)[xx] = (float) ((a3 * Math.cos(z3) + a2 * Math.cos(z2) + a1 * Math.cos(z1) + a0 * Math.cos(z0)) / ((b3 * Math.cos(z3) + b2 * Math.cos(z2) + b1 * Math.cos(z1) + b0 * Math.cos(z0)) + (1 / 100000000)));
+            (this.im)[xx] = (float) ((a3 * Math.sin(z3) + a2 * Math.sin(z2) + a1 * Math.sin(z1) + a0 * Math.sin(z0)) / ((b3 * Math.sin(z3) + b2 * Math.sin(z2) + b1 * Math.sin(z1) + b0 * Math.sin(z0)) + (1 / 100000000)));
+        }
+    }
+
+    public void movingavgfilter(int ii, Myclass x) {
+        this.equals(x);
+        for (int N = 0; N < ii + 1; N++) {
+            (this.re)[N] = 0;
+            (this.im)[N] = 0;
+            for (int k = 0; k < N; k++) {
+                this.re[N] += x.re[N - k];
+                this.im[N] += x.im[N - k];
+            }
+            this.re[N] = this.re[N] / (ii + 1);
+            this.im[N] = this.im[N] / (ii + 1);
         }
     }
 //end Myclass.java

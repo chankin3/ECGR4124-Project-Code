@@ -776,17 +776,11 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
 
 // Put your ecgr4124 code here
         //remove the following  code after answering the corresponding
-        //questions for project 1
         Myclass x = new Myclass();
-        Myclass y = new Myclass();
-
-        //x.equals(inData1);
-        x.equals(dispData);
-        y.equals(x);
-        y.plus(10);
-        y.plus(x);
-        dispData.equals(y);
-
+        //Myclass y = new Myclass();
+        x.movingavgfilter(8191, inData1);
+        dispData.equals(x);
+        inData1.equals(x);
         //dont remove below here
         refreshDisplay(); //redraws output display screen           
 
