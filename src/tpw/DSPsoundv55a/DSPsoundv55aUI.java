@@ -763,7 +763,7 @@ public class DSPsoundv55aUI extends javax.swing.JFrame {
         jEditorPaneBottom.setText(fkey + " clicked \n");  //printout at screenbottom 
         Myclass x = new Myclass();
         x.equals(dispData);
-        x.movingavgfilter(4);
+        x.movingavgfilter(16);
         dispData.equals(x);
 
         refreshDisplay(); //redraws output display screen           

@@ -852,21 +852,31 @@ public class Myclass {
     }
 
     public void QPSKSine(int freq) {
-        int n = this.getn();
+        Myclass x = new Myclass();
+        x.equals(this);
+        x.times(0.0f);
+        
+        float omega = (float) (2*Math.PI*freq);
 
+        
         for (int i = 0; i < n; i++) {
-            (this.re)[i] = (float) (Math.sin(2 * Math.PI * freq * i) * this.re[i]);
-            (this.im)[i] = (float) (Math.sin(2 * Math.PI * freq * i) * this.im[i]);
+            (x.re)[i] = (float) (Math.sin((omega * i)/8000) * this.re[i]);
         }
+        
+        this.equals(x);
     }
 
     public void QPSKCosine(int freq) {
-        int n = this.getn();
-
+        Myclass x = new Myclass();
+        x.equals(this);
+        x.times(0.0f);
+        
+        float omega = (float) (2*Math.PI*freq);
+        
         for (int i = 0; i < n; i++) {
-            (this.re)[i] = (float) (Math.cos(2 * Math.PI * freq * i) * this.re[i]);
-            (this.im)[i] = (float) (Math.cos(2 * Math.PI * freq * i) * this.im[i]);
+            (x.re)[i] = (float) (Math.cos((omega * i)/8000) * this.re[i]);
         }
+        this.equals(x);
     }
 //end Myclass.java
 }
